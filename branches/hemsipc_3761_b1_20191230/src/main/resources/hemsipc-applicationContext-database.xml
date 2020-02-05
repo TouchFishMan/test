@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<!-- 设置数据源 c3p0配置 需要用到的类 com.mchange.v2.c3p0.ComboPooledDataSource -->
+	<bean id="c3p0ds" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driverClassName}"></property>
+		<!-- 数据库 -->
+		<property name="jdbcUrl" value="${jdbc.url}"></property>
+		<property name="user" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+
+		<!-- 连接池中保留的最小连接数 -->
+		<property name="minPoolSize">
+			<value>1</value>
+		</property>
+		<!-- 连接池中保留的最大连接数 -->
+		<property name="maxPoolSize">
+			<value>20</value>
+		</property>
+		<!-- 最大空闲时间，超过空闲时间的连接将被丢弃。为0或负数则永不丢弃。默认为0 -->
+		<property name="maxIdleTime">
+			<value>60</value>
+		</property>
+		<!-- 当连接池中的连接用完时，C3P0一次性创建新连接的数目2 -->
+		<property name="acquireIncrement">
+			<value>2</value>
+		</property>
+
+		<property name="maxStatements">
+			<value>0</value>
+		</property>
+		<!-- 初始化时获取两个连接，取值应在minPoolSize与maxPoolSize之间 -->
+		<property name="initialPoolSize">
+			<value>2</value>
+		</property>
+		<!-- 隔1800秒检查所有连接池中的空闲连接，默认为0表示不检查 -->
+		<property name="idleConnectionTestPeriod">
+			<value>60</value>
+		</property>
+		<!--c3p0将建一张名为Test的空表，并使用其自带的查询语句进行测试。如果定义了这个参数那么 属性preferredTestQuery将被忽略。你不能在这张Test表上进行任何操作，它将只供c3p0测试 
+			使用。Default: null -->
+		<!-- <property name="automaticTestTable"><value>Test</value></property> -->
+		<!-- acquireRetryAttempts：定义在从数据库获取新连接失败后重复尝试获取的次数，默认为30 -->
+		<property name="acquireRetryAttempts">
+			<value>30</value>
+		</property>
+		<!-- 获取连接失败将会引起所有等待连接池来获取连接的线程抛出异常。但是数据源仍有效 保留，并在下次调用getConnection()的时候继续尝试获取连接 
+			。如果设为true， 那么在尝试获取连接失败后该数据源将申明已断开并永久关闭 -->
+		<property name="breakAfterAcquireFailure">
+			<value>false</value>
+		</property>
+
+		<property name="testConnectionOnCheckout">
+			<value>false</value>
+		</property>
+		<!-- 连接关闭时默认将所有未提交的操作回滚 -->
+		<property name="autoCommitOnClose">
+			<value>true</value>
+		</property>
+	</bean>
+
+</beans>

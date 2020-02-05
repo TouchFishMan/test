@@ -1,0 +1,13 @@
+ 
+jdbc.driverClassName=com.mysql.jdbc.Driver
+
+jdbc.url=jdbc:mysql://10.10.14.22:3306/hemsipc?useUnicode=true&amp;characterEncoding=UTF-8
+jdbc.username=manager
+jdbc.password=telekman
+
+
+ 
+
+
+
+

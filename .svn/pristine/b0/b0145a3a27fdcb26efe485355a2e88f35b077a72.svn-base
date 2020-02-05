@@ -1,0 +1,20 @@
+#netty.cloud.server.host = cn.telehems.com
+#netty.cloud.server.port = 10000
+
+netty.cloud.server.host = 10.10.14.18
+netty.cloud.server.port = 10000
+
+netty.cloud.client.port = 3333
+ 
+#jiangsu-jinying
+#netty.serial.port = 10000
+
+#foshan-haiyunxuan
+#netty.serial.port = 10002
+
+#3761\u534F\u8BAE\u7AEF\u53E3
+netty.protocol3761.port=10001
+
+spring.profiles.active = mysql
+    
+    
